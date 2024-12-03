@@ -8,4 +8,10 @@ public class myLinkedList {
         newNode.next = head;
         head = newNode;
     }
+
+    public static void main(String[] args) {
+        myLinkedList linkedList = new myLinkedList();
+        linkedList.addFirst(1);
+        linkedList.addFirst(2);
+    }
 }
