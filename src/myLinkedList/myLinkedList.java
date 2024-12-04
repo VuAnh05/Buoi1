@@ -108,6 +108,34 @@ public class myLinkedList {
         return count;
     }
 
+    public boolean search(int data) {
+        if (head == null) {
+            return false;
+        }
+        Node temp = head;
+        while (temp != null) {
+            if (temp.getData() == data) {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
+    public Node searchAtPosition(int index) {
+        if (index < 0 || index > length() - 1) { 
+            return null;
+        }
+        Node temp = head;
+        for (int i = 0; i < index; i++) { 
+            temp = temp.next;
+        //   nếu là i < index thì là nó lấy tại vị trí temp
+        //  còn i <= index thì là nó lấy tại vị trí temp.next
+        }
+        return temp; 
+    }
+    
+
     public void displayAll() {
         if (head == null) {
             return;
@@ -127,7 +155,9 @@ public class myLinkedList {
         linkedList.addFirst(2);
         linkedList.addLast(12);
         linkedList.add(124, 2);
-        linkedList.displayAll();;
+        linkedList.displayAll();
+        System.out.println();
+        System.out.println(linkedList.searchAtPosition(2));
         System.out.println();
         linkedList.delete(3);
         // linkedList.deleteLast();
