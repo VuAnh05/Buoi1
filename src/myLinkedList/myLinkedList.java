@@ -1,5 +1,7 @@
 package myLinkedList;
 
+import java.util.Collections;
+
 public class myLinkedList {
     private Node head;
 
@@ -83,10 +85,15 @@ public class myLinkedList {
             return;
         }
         Node temp = head;
-        for (int i = 0; i < index - 1; i++) {
-            if (temp.next != null) {
-                temp = temp.next;
-            }
+        // dung for
+        // for (int i = 0; i < index - 1; i++) {
+        // if (temp.next != null) {
+        // temp = temp.next;
+        // }
+        // }
+        // dung while
+        while (temp.next != null) {
+            temp = temp.next;
         }
         if (temp != null && temp.next != null) {
             temp.next = temp.next.next;
@@ -123,18 +130,34 @@ public class myLinkedList {
     }
 
     public Node searchAtPosition(int index) {
-        if (index < 0 || index > length() - 1) { 
+        if (index < 0 || index > length() - 1) {
             return null;
         }
         Node temp = head;
-        for (int i = 0; i < index; i++) { 
+        for (int i = 0; i < index; i++) {
             temp = temp.next;
-        //   nếu là i < index thì là nó lấy tại vị trí temp
-        //  còn i <= index thì là nó lấy tại vị trí temp.next
+            // nếu là i < index thì là nó lấy tại vị trí temp
+            // còn i <= index thì là nó lấy tại vị trí temp.next
         }
-        return temp; 
+        return temp;
     }
-    
+
+    public void sort() {
+        if ( head == null || head.next == null){
+            return;
+        }
+        Node i, j;
+        int temp;
+        for ( i = head; i.next != null; i = i.next){
+            for ( j = i.next; j  != null; j = j.next){
+                if ( i.getData() > j.getData()){
+                    temp = i.getData();
+                    i.setData(j.getData());
+                    j.setData(temp);
+                }
+            }
+        }
+    }
 
     public void displayAll() {
         if (head == null) {
@@ -162,6 +185,7 @@ public class myLinkedList {
         linkedList.delete(3);
         // linkedList.deleteLast();
         System.out.println(linkedList.length());
+        linkedList.sort();
         linkedList.displayAll();
     }
 
