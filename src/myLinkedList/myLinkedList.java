@@ -23,15 +23,14 @@ public class myLinkedList {
 
     }
 
-    public void add(int data, int index){
+    public void add(int data, int index) {
         Node newNode = new Node(data);
-        if ( index == 0){
+        if (index == 0) {
             addFirst(data);
             return;
-        }
-        else{
+        } else {
             Node temp = head;
-            for ( int i = 0; i < index - 1; i++){
+            for (int i = 0; i < index - 1; i++) {
                 temp = temp.next;
             }
             Node nextNode = temp.next;
@@ -40,10 +39,44 @@ public class myLinkedList {
         }
     }
 
+    public void delete(int index) {
+        Node temp = head;
+        if (index == 0) {
+            head = head.next;
+            return;
+        }
+        for (int i = 0; i < index - 1; i++) {
+            if (temp.next != null) {
+                temp = temp.next;
+            }
+
+        }
+        if (temp != null && temp.next != null) {
+            temp.next = temp.next.next;
+        } else {
+            System.out.println("Invalid Index");
+        }
+
+    }
+
+    public void displayAll() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.getData());
+            if (temp.next != null) {
+                System.out.print(" -> ");
+            }
+            temp = temp.next;
+        }
+    }
+
     public static void main(String[] args) {
         myLinkedList linkedList = new myLinkedList();
-        //linkedList.addFirst(1);
-        //linkedList.addFirst(2);
+        linkedList.addFirst(1);
+        linkedList.addFirst(2);
         linkedList.addLast(12);
+        linkedList.delete(21);
+        linkedList.displayAll();
     }
+
 }

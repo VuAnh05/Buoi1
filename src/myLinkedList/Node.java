@@ -12,4 +12,18 @@ public class Node {
         this.next = null;
     }
 
+    @Override
+    public String toString() {
+        return this.data + " " + this.next;
+    }
+
+    public int getData() {
+        return data;
+    }
+
+    public Node getNext() {
+        return next;
+    }
+    
+    
 }
