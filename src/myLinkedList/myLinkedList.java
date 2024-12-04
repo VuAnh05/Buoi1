@@ -58,22 +58,22 @@ public class myLinkedList {
         }
 
     }
-    public int length(){
+
+    public int length() {
         Node temp = head;
         int count = 0;
-        while ( temp != null){
+        while (temp != null) {
             count++;
             temp = temp.next;
         }
         return count;
     }
+
     public void displayAll() {
         Node temp = head;
         while (temp != null) {
             System.out.print(temp.getData());
-            if (temp.next != null) {
-                System.out.print(" -> ");
-            }
+            System.out.print(" -> ");
             temp = temp.next;
         }
     }
@@ -83,7 +83,7 @@ public class myLinkedList {
         linkedList.addFirst(1);
         linkedList.addFirst(2);
         linkedList.addLast(12);
-        linkedList.add(124,2);
+        linkedList.add(124, 2);
         linkedList.delete(21);
         System.out.println(linkedList.length());
         linkedList.displayAll();
