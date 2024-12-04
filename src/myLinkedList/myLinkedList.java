@@ -39,15 +39,45 @@ public class myLinkedList {
         }
     }
 
-    public void delete(int index) {
-        if ( head == null){
+    public void deleteFirst() {
+        if (head == null) {
             return;
         }
-        Node temp = head;       
+        head = head.next;
+    }
+
+    public void deleteLast() {
+        if (head == null) {
+            return;
+        }
+        Node temp = head;
+        Node previous = null;
+        if (head.next == null) {
+            deleteFirst();
+        }
+        while (temp.next != null) {
+            previous = temp;
+            temp = temp.next;
+        }
+        previous.next = null;
+    }
+
+    public void delete(int index) {
+        if (head == null) {
+            return;
+        }
+        if (index < 0) {
+            System.out.println("Invalid Index");
+            return;
+        }
+        if (head.next == null) {
+            deleteFirst();
+        }
         if (index == 0) {
             head = head.next;
             return;
         }
+        Node temp = head;
         for (int i = 0; i < index - 1; i++) {
             if (temp.next != null) {
                 temp = temp.next;
@@ -58,11 +88,10 @@ public class myLinkedList {
         } else {
             System.out.println("Invalid Index");
         }
-
     }
 
     public int length() {
-        if ( head == null){
+        if (head == null) {
             return 0;
         }
         Node temp = head;
@@ -75,7 +104,7 @@ public class myLinkedList {
     }
 
     public void displayAll() {
-        if ( head == null){
+        if (head == null) {
             return;
         }
         Node temp = head;
@@ -93,7 +122,8 @@ public class myLinkedList {
         linkedList.addFirst(2);
         linkedList.addLast(12);
         linkedList.add(124, 2);
-        linkedList.delete(0);
+        linkedList.delete(123);
+         linkedList.deleteLast();
         System.out.println(linkedList.length());
         linkedList.displayAll();
     }
