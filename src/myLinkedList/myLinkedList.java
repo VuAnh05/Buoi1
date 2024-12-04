@@ -52,7 +52,6 @@ public class myLinkedList {
             if (temp.next != null) {
                 temp = temp.next;
             }
-
         }
         if (temp != null && temp.next != null) {
             temp.next = temp.next.next;
@@ -85,6 +84,7 @@ public class myLinkedList {
             System.out.print(" -> ");
             temp = temp.next;
         }
+        System.out.print("null");
     }
 
     public static void main(String[] args) {
