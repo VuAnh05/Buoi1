@@ -40,7 +40,10 @@ public class myLinkedList {
     }
 
     public void delete(int index) {
-        Node temp = head;
+        if ( head == null){
+            return;
+        }
+        Node temp = head;       
         if (index == 0) {
             head = head.next;
             return;
@@ -60,6 +63,9 @@ public class myLinkedList {
     }
 
     public int length() {
+        if ( head == null){
+            return 0;
+        }
         Node temp = head;
         int count = 0;
         while (temp != null) {
@@ -70,6 +76,9 @@ public class myLinkedList {
     }
 
     public void displayAll() {
+        if ( head == null){
+            return;
+        }
         Node temp = head;
         while (temp != null) {
             System.out.print(temp.getData());
@@ -84,7 +93,7 @@ public class myLinkedList {
         linkedList.addFirst(2);
         linkedList.addLast(12);
         linkedList.add(124, 2);
-        linkedList.delete(21);
+        linkedList.delete(0);
         System.out.println(linkedList.length());
         linkedList.displayAll();
     }
