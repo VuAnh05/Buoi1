@@ -143,17 +143,48 @@ public class myLinkedList {
     }
 
     public void sort() {
-        if ( head == null || head.next == null){
+        if (head == null || head.next == null) {
             return;
         }
         Node i, j;
         int temp;
-        for ( i = head; i.next != null; i = i.next){
-            for ( j = i.next; j  != null; j = j.next){
-                if ( i.getData() > j.getData()){
+        for (i = head; i.next != null; i = i.next) {
+            for (j = i.next; j != null; j = j.next) {
+                if (i.getData() > j.getData()) {
                     temp = i.getData();
                     i.setData(j.getData());
                     j.setData(temp);
+                }
+            }
+        }
+    }
+
+    public void sortByPosition(int start, int end) {
+        if (head == null || start > end || start < 0 || end < 0 || end > length() - 1) {
+            return;
+        }
+        Node i = head;
+        Node j, startNode = null, endNode = null;
+        int index = 0;
+        while (index <= end) {
+            if (index == start) {
+                startNode = i;
+            } else if (index == end) {
+                endNode = i;
+                break;
+            }
+            i = i.next;
+            index++;
+        }
+        if (startNode == null || endNode == null) {
+            return;
+        }
+        for (i = startNode; i != endNode.next; i = i.next) {
+            for (j = i.next; j != endNode.next; j = j.next) {
+                if (i.getData() > j.getData()) {
+                    int tmp = i.getData();
+                    i.setData(j.getData());
+                    j.setData(tmp);
                 }
             }
         }
@@ -176,16 +207,13 @@ public class myLinkedList {
         myLinkedList linkedList = new myLinkedList();
         linkedList.addFirst(1);
         linkedList.addFirst(2);
-        linkedList.addLast(12);
-        linkedList.add(124, 2);
+        linkedList.addFirst(3);
+        linkedList.addFirst(4);
+        linkedList.addFirst(5);
+        linkedList.addFirst(6);
         linkedList.displayAll();
         System.out.println();
-        System.out.println(linkedList.searchAtPosition(2));
-        System.out.println();
-        linkedList.delete(3);
-        // linkedList.deleteLast();
-        System.out.println(linkedList.length());
-        linkedList.sort();
+        linkedList.sortByPosition(5, 6);
         linkedList.displayAll();
     }
 
