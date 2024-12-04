@@ -70,11 +70,16 @@ public class myLinkedList {
             System.out.println("Invalid Index");
             return;
         }
-        if (head.next == null) {
+        if (head.next == null) { // kiem tra neu cai list nay 1 phan tu
             deleteFirst();
+            return;
         }
         if (index == 0) {
-            head = head.next;
+            deleteFirst();
+            return;
+        }
+        if (index == length() - 1) {
+            deleteLast();
             return;
         }
         Node temp = head;
@@ -122,8 +127,10 @@ public class myLinkedList {
         linkedList.addFirst(2);
         linkedList.addLast(12);
         linkedList.add(124, 2);
-        linkedList.delete(123);
-         linkedList.deleteLast();
+        linkedList.displayAll();;
+        System.out.println();
+        linkedList.delete(3);
+        // linkedList.deleteLast();
         System.out.println(linkedList.length());
         linkedList.displayAll();
     }
