@@ -203,6 +203,19 @@ public class myLinkedList {
         System.out.print("null");
     }
 
+    public String laySo(){
+        if ( head == null){
+            return "";
+        }
+        String res = "";
+        Node temp = head;
+        while ( temp != null){
+            res += temp.getData();
+            temp = temp.next;
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         myLinkedList linkedList = new myLinkedList();
         linkedList.addFirst(1);
@@ -213,8 +226,19 @@ public class myLinkedList {
         linkedList.addFirst(6);
         linkedList.displayAll();
         System.out.println();
-        linkedList.sortByPosition(1, 4);
-        linkedList.displayAll();
+        String res = linkedList.laySo();
+        StringBuilder sb = new StringBuilder(res);
+        String k = sb.reverse().toString();
+        char[] m = k.toCharArray();
+        int[] a = new int[m.length];
+        for ( int i = 0; i < m.length; i++){
+            a[i] = m[i] - '0';
+        }
+        myLinkedList newNode = new myLinkedList();
+        for ( int i = 0; i < a.length; i++){
+            newNode.addLast(a[i]);
+        }
+        newNode.displayAll();
     }
 
 }
