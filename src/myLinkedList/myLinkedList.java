@@ -1,6 +1,5 @@
 package myLinkedList;
 
-import java.util.Collections;
 
 public class myLinkedList {
     private Node head;
