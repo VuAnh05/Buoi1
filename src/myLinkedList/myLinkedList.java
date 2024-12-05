@@ -160,31 +160,31 @@ public class myLinkedList {
     }
 
     public void sortByPosition(int start, int end) {
-        if (head == null || start > end || start < 0 || end < 0 || end > length() - 1) {
+        if ( head == null || start > end || start < 0 || end < 0 || end > length() - 1){
             return;
         }
-        Node i = head;
-        Node j, startNode = null, endNode = null;
+        Node i = head, j, startNode = null, endNode = null;
         int index = 0;
-        while (index <= end) {
-            if (index == start) {
+        while ( index <= end){
+            if ( index == start){
                 startNode = i;
-            } else if (index == end) {
+            }
+            if ( index == end){
                 endNode = i;
                 break;
             }
             i = i.next;
             index++;
         }
-        if (startNode == null || endNode == null) {
+        if ( startNode == null || endNode == null){
             return;
         }
-        for (i = startNode; i != endNode.next; i = i.next) {
-            for (j = i.next; j != endNode.next; j = j.next) {
-                if (i.getData() > j.getData()) {
-                    int tmp = i.getData();
+        for ( i =  startNode; i != endNode.next; i = i.next){
+            for ( j = i.next; j != endNode.next; j = j.next){
+                if ( i.getData() > j.getData()){
+                    int a = i.getData();
                     i.setData(j.getData());
-                    j.setData(tmp);
+                    j.setData(a);
                 }
             }
         }
@@ -213,7 +213,7 @@ public class myLinkedList {
         linkedList.addFirst(6);
         linkedList.displayAll();
         System.out.println();
-        linkedList.sortByPosition(5, 6);
+        linkedList.sortByPosition(1, 4);
         linkedList.displayAll();
     }
 
