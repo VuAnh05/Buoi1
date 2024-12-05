@@ -45,12 +45,12 @@ class Solution {
         long sum = Long.parseLong(num1) + Long.parseLong(num2);
 
         String res = String.valueOf(sum);
-        
+
         char[] c = res.toCharArray();
         int[] a = new int[c.length];
         ListNode head = new ListNode();
         ListNode temp = head;
-        
+
         for (int i = 0; i < c.length; i++) {
             a[i] = c[i] - '0';
         }
@@ -66,7 +66,6 @@ class Solution {
     }
 
     public static void main(String[] args) {
-      
 
         ListNode l1 = new ListNode(1);
         l1.next = new ListNode(2);
