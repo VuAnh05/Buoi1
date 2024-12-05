@@ -1,7 +1,7 @@
 package myLinkedList;
 
 class Solution {
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
 
@@ -27,7 +27,7 @@ class Solution {
 
     }
 
-    public String laySo(ListNode node) {
+    public static String laySo(ListNode node) {
         String res = "";
         while (node != null) {
             res += node.getVal();
@@ -38,7 +38,7 @@ class Solution {
 
     }
 
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         String num1 = laySo(l1);
         String num2 = laySo(l2);
 
@@ -66,17 +66,16 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+      
 
-        ListNode l1 = solution.new ListNode(1);
-        l1.next = solution.new ListNode(2);
-        l1.next.next = solution.new ListNode(3);
+        ListNode l1 = new ListNode(1);
+        l1.next = new ListNode(2);
+        l1.next.next = new ListNode(3);
 
-        ListNode l2 = solution.new ListNode(3);
-        l2.next = solution.new ListNode(4);
-        l2.next.next = solution.new ListNode(5);
-
-        ListNode result = solution.addTwoNumbers(l1, l2);
+        ListNode l2 = new ListNode(3);
+        l2.next = new ListNode(4);
+        l2.next.next = new ListNode(5);
+        ListNode result = addTwoNumbers(l1, l2);
 
         while (result != null) {
             System.out.print(result.val + " ");
