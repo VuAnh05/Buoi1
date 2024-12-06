@@ -1,5 +1,7 @@
 package myLinkedList;
 
+import java.util.List;
+
 public class Solution2 {
     public static class ListNode {
         int val;
@@ -32,14 +34,13 @@ public class Solution2 {
         ListNode head = new ListNode(0);
         ListNode temp = head;
         int sum = 0;
-        while ( l1 != null || l2 != null || res != 0 ){
-            int val1 = 0;
-            int val2 = 0;
+        while( res != 0 || l1 != null || l2 != null){
+            int val1 = 0, val2 = 0;
             if ( l1 != null){
                 val1 = l1.val;
                 l1 = l1.next;
             }
-            if ( l2 != null ){
+            if (  l2 != null ){
                 val2 = l2.val;
                 l2 = l2.next;
             }
