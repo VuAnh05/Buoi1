@@ -63,55 +63,36 @@ public class myLinkedList {
         previous.next = null;
     }
 
-    public void delete(int index) {
+    public void deleteAtIndex(int index) {
+        if (index < 0 || index >= getLength()) {
+            return;
+        }
         if (head == null) {
-            return;
-        }
-        if (index < 0) {
-            System.out.println("Invalid Index");
-            return;
-        }
-        if (head.next == null) { // kiem tra neu cai list nay 1 phan tu
-            deleteFirst();
             return;
         }
         if (index == 0) {
             deleteFirst();
             return;
         }
-        if (index == length() - 1) {
-            deleteLast();
-            return;
-        }
+        
         Node temp = head;
-        // dung for
-        // for (int i = 0; i < index - 1; i++) {
-        // if (temp.next != null) {
-        // temp = temp.next;
-        // }
-        // }
-        // dung while
-        while (temp.next != null) {
+        for (int i = 0; i < index - 1; i++) {
             temp = temp.next;
         }
+        
         if (temp != null && temp.next != null) {
-            temp.next = temp.next.next;
-        } else {
-            System.out.println("Invalid Index");
+            temp.next = temp.next.next; // Liên kết lại với node sau khi xóa
         }
     }
-
-    public int length() {
-        if (head == null) {
-            return 0;
-        }
+    
+    public int getLength() {
         Node temp = head;
-        int count = 0;
-        while (temp != null) {
-            count++;
+        int cnt = 0;
+        while (temp != null) {  // Chỉnh sửa vòng lặp để bao gồm cả phần tử cuối
+            cnt++;
             temp = temp.next;
         }
-        return count;
+        return cnt;
     }
 
     public boolean search(int data) {
@@ -129,7 +110,7 @@ public class myLinkedList {
     }
 
     public Node searchAtPosition(int index) {
-        if (index < 0 || index > length() - 1) {
+        if (index < 0 || index > getLength() - 1) {
             return null;
         }
         Node temp = head;
@@ -159,7 +140,7 @@ public class myLinkedList {
     }
 
     public void sortByPosition(int start, int end) {
-        if ( head == null || start > end || start < 0 || end < 0 || end > length() - 1){
+        if ( head == null || start > end || start < 0 || end < 0 || end > getLength() - 1){
             return;
         }
         Node i = head, j, startNode = null, endNode = null;
@@ -238,6 +219,9 @@ public class myLinkedList {
             newNode.addLast(a[i]);
         }
         newNode.displayAll();
+        linkedList.deleteAtIndex(0);
+        System.out.println();
+        linkedList.displayAll();
     }
 
 }
